@@ -1,0 +1,111 @@
+/* Add any custom styles or overrides here if needed */
+body {
+    /* Ensure font loaded from Google Fonts is used */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Style for the date input to show it's multi-select capable */
+input[type="date"] {
+   /* Basic appearance reset */
+   appearance: none;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+    background-color: white; /* Ensure bg for contrast */
+}
+
+/* Style for the custom tooltip */
+#grid-tooltip {
+    transform: translate(-50%, -110%); /* Position above the cursor */
+}
+
+/* Custom grid cell styling */
+.time-slot {
+    min-width: 60px; /* Ensure minimum tappable width */
+    height: 40px;
+    border: 1px solid #E5E7EB; /* gray-200 */
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, outline 0.1s ease-in-out; /* Add outline transition */
+    position: relative; /* Needed for absolute positioned tooltip content */
+    font-size: 0.7rem; /* Smaller text inside cells */
+    line-height: 40px; /* Vertically center (approx) */
+    text-align: center;
+    user-select: none; /* Prevent text selection on drag */
+    -webkit-user-select: none;
+}
+
+.time-slot.selected {
+    /* Use a distinct color for user's own selection */
+    background-color: #4ade80; /* Example: Tailwind green-400 */
+    border-color: #22c55e; /* Example: Tailwind green-500 */
+}
+
+/* Heatmap styles (will be applied by JS) */
+.heatmap-0 { background-color: #FFFFFF; } /* White or very light gray */
+.heatmap-1 { background-color: #FFE0B2; } /* primary-light */
+.heatmap-2 { background-color: #FFB74D; } /* Orange 300 */
+.heatmap-3 { background-color: #FF9800; } /* Orange 500 */
+.heatmap-4 { background-color: #F57C00; } /* primary / Orange 700 */
+.heatmap-5 { background-color: #E65100; } /* primary-dark / Orange 900 */
+
+/* Hover effect for heatmap cells (not headers/labels) */
+.time-slot:not(.header):not(.date-label):hover {
+    outline: 2px solid #F57C00; /* primary */
+    z-index: 10; /* Bring to front */
+}
+
+/* Header cells in the grid */
+.time-slot.header {
+    background-color: #F9FAFB; /* gray-50 */
+    font-weight: 500;
+    font-size: 0.75rem;
+    cursor: default;
+    border-bottom-width: 2px;
+    border-color: #D1D5DB; /* gray-300 */
+}
+.time-slot.date-label {
+    background-color: #F9FAFB; /* gray-50 */
+    font-weight: 500;
+    cursor: default;
+    border-right-width: 2px;
+     border-color: #D1D5DB; /* gray-300 */
+     text-align: right;
+     padding-right: 0.5rem;
+     min-width: 100px;
+}
+
+/* NEW: Style for the cell selected to show details */
+.time-slot.selected-for-details {
+    outline: 3px solid #2563EB; /* Tailwind Blue-600 */
+    outline-offset: -1px; /* Optional: Adjust outline position */
+    z-index: 20; /* Make sure outline is visible above hover effects */
+}
+
+/* Make grid scrollable horizontally */
+#availability-grid-container table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Prevent selecting text during drag */
+body.dragging * {
+    cursor: grabbing !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+
+/* Style tweaks for the details list area */
+#slot-details-display ul {
+   scrollbar-width: thin; /* For Firefox */
+   scrollbar-color: #ccc #f0f0f0; /* For Firefox */
+}
+#slot-details-display ul::-webkit-scrollbar {
+  width: 6px;
+}
+#slot-details-display ul::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+#slot-details-display ul::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
