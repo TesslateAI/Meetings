@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3021;
 
 // --- Middleware ---
 app.use(cors()); // Allow requests from frontend (useful in development)
